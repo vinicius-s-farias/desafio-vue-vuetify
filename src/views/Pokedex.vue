@@ -1,43 +1,56 @@
 <template>
-  <v-card class="mx-auto" max-width="400" outlined>
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="text-overline mb-4">Pokedex</div>
-        <v-list-item-title class="text-h5 mb-1"
-          >Nome: {{ pokeName }}</v-list-item-title
+  <v-container id="container">
+    <v-card id="card" class="mx-auto red darken-3" max-width="400" outlined>
+      <v-list-item three-line>
+        <v-list-item-content class="red darken-3">
+          <div class="text-overline mb-4">Pokedex</div>
+          <v-list-item-title class="text-h5 mb-1"
+            >Nome: {{ pokeName }}</v-list-item-title
+          >
+          <v-list-item-subtitle>Tipo 1: {{ poketype1 }}</v-list-item-subtitle>
+          <v-list-item-subtitle>Tipo 2: {{ poketype2 }}</v-list-item-subtitle>
+        </v-list-item-content>
+
+        <v-list-item-avatar v-if="loading" tile size="80" color="grey"
+          ><v-progress-circular
+            indeterminate
+            color="primary"
+          ></v-progress-circular>
+        </v-list-item-avatar>
+        <v-list-item-avatar v-else tile size="80" color="grey"
+          ><img :src="sprite" alt="Pokemon"
+        /></v-list-item-avatar>
+      </v-list-item>
+
+      <v-card-actions>
+        <v-text-field
+          label="Digite o nome do Pokemon"
+          @blur="getPoke"
+          v-model="pokeSearch"
         >
-        <v-list-item-subtitle>Tipo 1: {{ poketype1 }}</v-list-item-subtitle>
-        <v-list-item-subtitle>Tipo 2: {{ poketype2 }}</v-list-item-subtitle>
-      </v-list-item-content>
-
-      <v-list-item-avatar tile size="80" color="grey"
-        ><img :src="sprite" alt="Pokemon"
-      /></v-list-item-avatar>
-    </v-list-item>
-
-    <v-card-actions>
-      <v-text-field
-        label="Digite o nome do Pokemon"
-        @blur="getPoke"
-        v-model="pokeSearch"
-      >
-      </v-text-field>
-    </v-card-actions>
-  </v-card>
+        </v-text-field>
+      </v-card-actions>
+    </v-card>
+  </v-container>
 </template>
+
+
+
 
 <script>
 export default {
   data: () => ({
+    loading: false,
     pokeName: "",
     pokeSearch: "",
     poketype1: "",
     poketype2: "",
-    sprite: "",
+    sprite: "https://pngimg.com/uploads/pokeball/pokeball_PNG24.png",
   }),
 
   methods: {
     async getPoke() {
+      this.loading = true;
       const pokeSearch = this.pokeSearch.toLowerCase();
 
       try {
@@ -59,7 +72,11 @@ export default {
         this.pokeName = "Pokemon não encontrado!";
         console.log("Erro na requisição");
       }
+      this.loading = false;
     },
   },
 };
 </script>
+
+<style>
+</style>
