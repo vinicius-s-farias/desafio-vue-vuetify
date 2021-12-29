@@ -61,9 +61,14 @@ export default {
         const json = await response.json();
         console.log(json);
 
-        this.pokeName = json.name;
+        this.pokeName = json.name.toUpperCase();
 
-        this.poketype1 = json.types[0].type.name;
+        this.poketype1 = json.types[0].type.name.toUpperCase();
+        if (json.types[1]) {
+          this.poketype2 = json.types[1].type.name.toUpperCase();
+        } else {
+          this.type2 = "";
+        }
         console.log(json.id);
         this.sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${json.id}.png`;
       } catch (error) {
@@ -79,4 +84,5 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 </style>
