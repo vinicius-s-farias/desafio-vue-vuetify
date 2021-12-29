@@ -3,12 +3,11 @@
 </template>
 
 <script>
-import Home from "./views/Pokedex.vue";
+import Home from "./views/Home.vue";
 
 export default {
   components: {
     Home,
   },
-  data: () => ({}),
 };
 </script>
