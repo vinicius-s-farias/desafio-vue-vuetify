@@ -127,11 +127,11 @@ export default {
     },
 
     alertInput() {
-      if (this.erro != ''){
+      if (this.erro != '') {
         this.alertType = 'error'
       }
-    }
-}
+    },
+  }
 }
 
 </script>

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Streaming from '../views/Streaming.vue'
 import Pokedex from '../views/Pokedex.vue'
 import Cripto from '../views/Cripto.vue'
+import Got from '../views/got.vue'
 
 Vue.use(VueRouter)
 
@@ -24,7 +25,7 @@ const routes = [
     component: Streaming
   },
   {
-    path: 'pokedex',
+    path: '/pokedex',
     name: 'Pokedex',
     component: Pokedex
   },
@@ -32,6 +33,11 @@ const routes = [
     path: '/cripto',
     name: 'Cripto',
     component: Cripto
+  },
+  {
+    path: '/Got',
+    name: 'Got',
+    component: Got
   }
 ]
 

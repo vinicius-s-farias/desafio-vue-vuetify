@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="1">
-        <img src="../assets/cripto.png" alt="" width="300">
+        <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/09/Cryptocurrency-Bitcoin-PNG-1024x350.png" alt="" width="300">
       </v-col>
       <h1 class="mx-auto mt-9">
         DIGITE ABAIXO A SIGLA DA MOEDA DESEJADA, COMPARE E CONFIRA SUAS

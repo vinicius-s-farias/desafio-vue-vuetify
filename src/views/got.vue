@@ -49,6 +49,7 @@
           :key="i"
           color="#90A4AE"
         >
+        <v-spacer></v-spacer>
           <v-layout :class="`pa-3 casa ${casa.name}`">
             <v-flex xs6 md6>
               <div class="caption black--text">HOUSE</div>
@@ -95,7 +96,6 @@
         <v-toolbar-title class="subheading green--text"
           >Projects</v-toolbar-title
         >
-        <v-spacer></v-spacer>
         <v-btn
           v-for="(link, i) in links"
           :key="i"
