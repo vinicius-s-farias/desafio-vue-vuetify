@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Streaming from '../views/Streaming.vue'
 import Pokedex from '../views/Pokedex.vue'
+import Cripto from '../views/Cripto.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [
     path: 'pokedex',
     name: 'Pokedex',
     component: Pokedex
+  },
+  {
+    path: '/cripto',
+    name: 'Cripto',
+    component: Cripto
   }
 ]
 

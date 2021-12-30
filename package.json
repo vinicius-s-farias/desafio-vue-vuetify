@@ -10,7 +10,11 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+<<<<<<< HEAD
     "dotenv": "^10.0.0",
+=======
+    "v-money": "^0.8.1",
+>>>>>>> 8eb949161ca01555d38f2a91584dfb5e3ad46fc7
     "vue": "^2.6.11",
     "vue-notification": "^1.3.20",
     "vue-router": "^3.2.0",
