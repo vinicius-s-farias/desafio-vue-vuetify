@@ -1,5 +1,4 @@
 <template>
-<v-app>
     <v-app-bar>
         <v-container>
             <v-card>
@@ -8,13 +7,7 @@
                 </v-card-title>
             </v-card>
         </v-container>
-         
     </v-app-bar>
-    <v-main>
-        <router-view></router-view>
-    </v-main>
-</v-app>
-
 </template>
 
 
