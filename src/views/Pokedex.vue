@@ -1,37 +1,40 @@
 <template>
-  <v-container id="container">
-    <v-card id="card" class="mx-auto red darken-3" max-width="400" outlined>
-      <v-list-item three-line>
-        <v-list-item-content class="red darken-3">
-          <div class="text-overline mb-4">Pokedex</div>
-          <v-list-item-title class="text-h5 mb-1"
-            >Nome: {{ pokeName }}</v-list-item-title
-          >
-          <v-list-item-subtitle>Tipo 1: {{ poketype1 }}</v-list-item-subtitle>
-          <v-list-item-subtitle>Tipo 2: {{ poketype2 }}</v-list-item-subtitle>
-        </v-list-item-content>
-
-        <v-list-item-avatar v-if="loading" tile size="80" color="grey"
-          ><v-progress-circular
-            indeterminate
-            color="primary"
-          ></v-progress-circular>
-        </v-list-item-avatar>
-        <v-list-item-avatar v-else tile size="80" color="grey"
-          ><img :src="sprite" alt="Pokemon"
-        /></v-list-item-avatar>
-      </v-list-item>
-
-      <v-card-actions>
-        <v-text-field
-          label="Digite o nome do Pokemon"
-          @blur="getPoke"
-          v-model="pokeSearch"
+  <v-card id="card" class="mx-auto" max-width="400" color="orange">
+    <v-list-item three-line>
+      <v-list-item-content class="red darken-3">
+        <div id="app-title" class="text-overline mb-4">Pokedex</div>
+        <v-list-item-title id="poke-name" class="text-h5 mb-1"
+          >Nome: {{ pokeName }}</v-list-item-title
         >
-        </v-text-field>
-      </v-card-actions>
-    </v-card>
-  </v-container>
+
+        <v-list-item-subtitle id="type1" class="poke-type">{{
+          poketype1
+        }}</v-list-item-subtitle>
+        <v-list-item-subtitle id="type2" class="poke-type">{{
+          poketype2
+        }}</v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar v-if="loading" tile size="80" color="grey"
+        ><v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
+      </v-list-item-avatar>
+      <v-list-item-avatar v-else tile size="80" color="grey"
+        ><img :src="sprite" alt="Pokemon"
+      /></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-text-field
+        label="Digite o nome do Pokemon"
+        @blur="getPoke"
+        v-model="pokeSearch"
+      >
+      </v-text-field>
+    </v-card-actions>
+  </v-card>
 </template>
 
 
@@ -84,5 +87,28 @@ export default {
 </script>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#card {
+  margin: 24px auto;
+  height: auto;
+}
+
+#app-title {
+  font-size: 24px;
+}
+
+.poke-type {
+  font-weight: bold;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+html {
+  font-family: "Roboto", sans-serif;
+}
 </style>

@@ -1,13 +1,13 @@
 <template>
-  <Home />
+  <Pokedex />
 </template>
 
 <script>
-import Home from "./views/Home.vue";
+import Pokedex from "./views/Pokedex.vue";
 
 export default {
   components: {
-    Home,
+    Pokedex,
   },
 };
 </script>
