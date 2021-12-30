@@ -5,6 +5,7 @@ import Streaming from '../views/Streaming.vue'
 import Pokedex from '../views/Pokedex.vue'
 import Cripto from '../views/Cripto.vue'
 import Got from '../views/got.vue'
+import Movies from '../views/Movies.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const routes = [
     path: '/Got',
     name: 'Got',
     component: Got
+  },
+  {
+    path: '/Movies',
+    name: 'Movies',
+    component: Movies
   }
 ]
 
