@@ -1,12 +1,15 @@
 <template>
   <v-container>
-    <v-card class="pa-md-16 mx-lg-auto">
+    <v-card class="pa-md-16 mx-lg-auto" width="800px">
       <v-card-title>
         Descubra onde assistir seu filme ou série favoritos
       </v-card-title>
-      <v-form>
+        <v-col cols="6">
+            <v-img src="https://cdn.watchmode.com/misc_images/homepageHeaderLogosText.png"></v-img>
+          </v-col>
+      <v-form >
         <v-row>
-          <v-col cols="6">
+          <v-col cols="12">
             <v-text-field
               label="Título"
               v-model="title"
@@ -25,7 +28,7 @@
             <v-btn label="Pesquisar" @click="getId"> Pesquisar </v-btn>
           </v-col>
           <v-card-text> Onde assistir: </v-card-text>
-          <v-col cols="6">
+          <v-col cols="12">
             <v-text-field prepend-icon="mdi-laptop" label="Web" v-model="webUrl"></v-text-field>
             <v-btn v-if="exibirWeb" v-bind:href="webUrl"> Acessar </v-btn>
             <v-spacer></v-spacer>
@@ -36,7 +39,7 @@
             <v-btn v-if="exibirAndroid" v-bind:href="androidUrl">
               Acessar
             </v-btn>
-          </v-col>
+          </v-col> 
         </v-row>
       </v-form>
     </v-card>
