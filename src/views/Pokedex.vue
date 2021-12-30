@@ -33,6 +33,7 @@
         v-model="pokeSearch"
       >
       </v-text-field>
+      <v-btn @click="getPoke">Pesquisar</v-btn>
     </v-card-actions>
   </v-card>
 </template>
