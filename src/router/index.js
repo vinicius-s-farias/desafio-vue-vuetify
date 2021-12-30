@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Streaming from '../views/Streaming.vue'
+import Pokedex from '../views/Pokedex.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/streaming',
     name: 'Streaming',
     component: Streaming
+  },
+  {
+    path: 'pokedex',
+    name: 'Pokedex',
+    component: Pokedex
   }
 ]
 
