@@ -163,6 +163,7 @@ export default {
   name: "App",
 
   data: () => ({
+    return: { image: { backgroundImage: "url(https://s1.1zoom.me/big3/533/Game_of_Thrones_8_Sitting_Three_3_562310_3840x2160.jpg)" } },
     title: this.title = this.title = [this.personagens.name],
     casas: [],
     personagens: [],
@@ -203,6 +204,10 @@ export default {
 </script>
 
 <style>
+.back {
+  background: url('https://s1.1zoom.me/big3/533/Game_of_Thrones_8_Sitting_Three_3_562310_3840x2160.jpgg') no-repeat center center fixed !important;
+  background-size: cover;
+}
 </style>
 
 class="grey lighten-2 fill-height d-flex flex-column justify-center align-center
