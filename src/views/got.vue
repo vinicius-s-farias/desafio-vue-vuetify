@@ -197,7 +197,7 @@ export default {
       const D = await fetch(`https://anapioficeandfire.com/api/books/${i}`);
       info = await D.json();
       this.author = info.authors;
-      this.book = info.name;
+      this.book = info.name
     },
   },
 };
