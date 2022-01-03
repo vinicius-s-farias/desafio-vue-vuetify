@@ -36,12 +36,12 @@ const routes = [
     component: Cripto
   },
   {
-    path: '/Got',
+    path: '/got',
     name: 'Got',
     component: Got
   },
   {
-    path: '/Movies',
+    path: '/movies',
     name: 'Movies',
     component: Movies
   }

@@ -1,7 +1,7 @@
 <template>
-  <v-card id="card" class="mx-auto" max-width="400" color="orange">
+  <v-card id="card" class="mx-auto" max-width="400">
     <v-list-item three-line>
-      <v-list-item-content class="red darken-3">
+      <v-list-item-content>
         <div id="app-title" class="text-overline mb-4">Pokedex</div>
         <v-list-item-title id="poke-name" class="text-h5 mb-1"
           >Nome: {{ pokeName }}</v-list-item-title
@@ -15,13 +15,13 @@
         }}</v-list-item-subtitle>
       </v-list-item-content>
 
-      <v-list-item-avatar v-if="loading" tile size="80" color="grey"
+      <v-list-item-avatar v-if="loading" tile size="80"
         ><v-progress-circular
           indeterminate
           color="primary"
         ></v-progress-circular>
       </v-list-item-avatar>
-      <v-list-item-avatar v-else tile size="80" color="grey"
+      <v-list-item-avatar v-else tile size="80"
         ><img :src="sprite" alt="Pokemon"
       /></v-list-item-avatar>
     </v-list-item>
@@ -33,6 +33,7 @@
         v-model="pokeSearch"
       >
       </v-text-field>
+      <v-btn @click="getPoke">Pesquisar</v-btn>
     </v-card-actions>
   </v-card>
 </template>

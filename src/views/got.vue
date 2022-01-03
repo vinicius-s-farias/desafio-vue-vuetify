@@ -17,14 +17,13 @@
                       <v-text-field
                         label="House"
                         prepend-icon=""
+                        v-model="nameH"
                       >
                       </v-text-field>
-                      <v-text-field v-for="(casa, i) in casas"
-                        :key="i" :value="casa.region"
-                        label=""
-                        v-model="nameH"
-                        prepend-icon=""
-                      >{{casa.region}}</v-text-field>
+                      <v-text-field 
+                      label="Region"
+                      v-model="region"
+                      ></v-text-field>
                     </v-form>
                   </v-card-text>
                   <v-card-actions class="justify-space-between">
@@ -48,6 +47,7 @@
                     <v-form class="px-3">
                       <v-text-field
                         label="Personagem"
+                        v-model="nameC"
                         prepend-icon=""
                       ></v-text-field>
                       <v-text-field
@@ -76,19 +76,19 @@
                   <v-card-text>
                     <v-form class="px-3">
                       <v-text-field
-                        label="title"
-                      
+                        label="Book Name"
+                        v-model="book"
                         prepend-icon=""
                       ></v-text-field>
                       <v-text-field
-                        label="information"
-                        v-model="content"
+                        label="Author"
+                        v-model="author"
                         prepend-icon=""
                       ></v-text-field>
                     </v-form>
                   </v-card-text>
                   <v-card-actions class="justify-space-between">
-                    <v-btn flat class="sucsses mx-0 mt-3" justify="left">Chose</v-btn>
+                    <v-btn flat class="sucsses mx-0 mt-3" justify="left" @click="getBook">Chose</v-btn>
                     <v-btn text @click="dialog.value = false">Close</v-btn>
                   </v-card-actions>
                 </v-card>
@@ -163,41 +163,44 @@ export default {
   name: "App",
 
   data: () => ({
-    return: { image: { backgroundImage: "url(https://s1.1zoom.me/big3/533/Game_of_Thrones_8_Sitting_Three_3_562310_3840x2160.jpg)" } },
-    title: this.title = this.title = [this.personagens.name],
-    casas: [],
-    personagens: [],
-    books: [],
+
     region: "",
     nameH :"",
-    nameC:""
+    nameC:"",
+    title: "",
+    author:"",
+    book:""
   }),
   methods: {
     sortBy(prop) {
       this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     },
     async getHouse() {
+      let info;
       const i = Math.floor(Math.random() * 378);
       const data = await fetch(`https://anapioficeandfire.com/api/houses/${i}`);
-      this.casas.push(await data.json());
-      this.nameH = this.casas.name;
-      this.region = this.casas.region;
+      info = await data.json();
+      this.nameH = info.name;
+      this.region = info.region;
     },
 
     async getPerson() {
+      let info;
       const i = Math.floor(Math.random() * 583);
       const D = await fetch(
-        `https://anapioficeandfire.com/api/characters/${i}`
-      );
-      this.personagens.push(await D.json());
+        `https://anapioficeandfire.com/api/characters/${i}`);
+      info = await D.json();
+      this.nameC = info.name
+      this.title = info.titles
     },
     async getBook() {
+      let info;
       const i = Math.floor(Math.random() * 12);
       const D = await fetch(`https://anapioficeandfire.com/api/books/${i}`);
-      this.books.push(await D.json());
-    },  
-
-    
+      info = await D.json();
+      this.author = info.authors
+      this.book = info.name
+    },   
     
   },
 };
