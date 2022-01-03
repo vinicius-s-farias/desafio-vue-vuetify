@@ -109,7 +109,7 @@
               <v-dialog transition="dialog-top-transition" max-width="600">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
-                    ooutline
+                    outline
                     block
                     dark
                     color="#424242"

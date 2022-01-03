@@ -1,4 +1,9 @@
 <template>
+<v-img
+      background-size:
+      cover
+      src="https://agrinovusindiana.com/wp-content/uploads/2021/03/Solinftec-Hiring.png"
+    >
   <div class="team">
     <v-container>
       <h1 class="subheading grey--text">Equipe</h1>
@@ -13,7 +18,7 @@
                 </v-avatar>
               </v-row>
             </v-responsive>
-            <v-card-text>
+            <v-card-text >
               <div class="subheading">{{ person.name }}</div>
               <div class="grey--text">{{ person.role }}</div>
             </v-card-text>
@@ -25,6 +30,9 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
+         
+         rounded
+          block
           color="primary"
           dark
           v-bind="attrs"
@@ -33,7 +41,7 @@
           Envie uma mensagem
         </v-btn>
       </template>
-      <v-card>
+      <v-card >
         <v-textarea label="Envie uma mensagem aos nossos desenvolvedores!">
         </v-textarea>
         <v-card-actions>
@@ -61,6 +69,7 @@
       </v-layout>
     </v-container>
   </div>
+</v-img>
 </template>
 
 
