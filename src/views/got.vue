@@ -17,14 +17,12 @@
                       <v-text-field
                         label="House"
                         prepend-icon=""
+                        v-model="nameH"
                       >
                       </v-text-field>
-                      <v-text-field v-for="(casa, i) in casas"
-                        :key="i" :value="casa.region"
-                        label=""
-                        v-model="nameH"
-                        prepend-icon=""
-                      >{{casa.region}}</v-text-field>
+                      <v-text-field 
+                      v-model="region"
+                      ></v-text-field>
                     </v-form>
                   </v-card-text>
                   <v-card-actions class="justify-space-between">
@@ -52,7 +50,6 @@
                       ></v-text-field>
                       <v-text-field
                         label="Title"
-                        v-model="title"
                         prepend-icon=""
                       ></v-text-field>
                     </v-form>
@@ -163,8 +160,7 @@ export default {
   name: "App",
 
   data: () => ({
-    title: this.title = this.title = [this.personagens.name],
-    casas: [],
+    information: {},
     personagens: [],
     books: [],
     region: "",
@@ -176,11 +172,13 @@ export default {
       this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     },
     async getHouse() {
+      let info;
       const i = Math.floor(Math.random() * 378);
       const data = await fetch(`https://anapioficeandfire.com/api/houses/${i}`);
-      this.casas.push(await data.json());
-      this.nameH = this.casas.name;
-      this.region = this.casas.region;
+      info = await data.json();
+      this.nameH = info.name;
+      this.region = info.region;
+      console.log("nome da casa", this.nameH, "nome da regiao", this.region)
     },
 
     async getPerson() {
