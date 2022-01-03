@@ -1,4 +1,9 @@
 <template>
+<v-img
+      background-size:
+      cover
+      src="https://agrinovusindiana.com/wp-content/uploads/2021/03/Solinftec-Hiring.png"
+    >
   <div class="team">
     <v-container>
       <h1 class="subheading grey--text">Equipe</h1>
@@ -13,18 +18,19 @@
                 </v-avatar>
               </v-row>
             </v-responsive>
-            <v-card-text>
+            <v-card-text >
               <div class="subheading">{{ person.name }}</div>
               <div class="grey--text">{{ person.role }}</div>
             </v-card-text>
             <v-card-actions>
-              
+
             </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
     </v-container>
   </div>
+</v-img>
 </template>
 
 
