@@ -2,8 +2,8 @@
   <v-app>
       <v-app-bar app dark>
 
-        <v-toolbar-title class="subheading green--text"
-          >Desafio Vue + Vuetify</v-toolbar-title
+        <v-toolbar-title>
+          Desafio Vue + Vuetify</v-toolbar-title
         >
         <v-spacer></v-spacer>
         <v-btn
