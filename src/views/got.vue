@@ -30,13 +30,14 @@
                     <v-card-text>
                       <v-form class="px-3">
                         <v-text-field
+                         prepend-icon="mdi-castle"
                           dakr
                           label="House"
-                          prepend-icon=""
                           v-model="nameH"
                         >
                         </v-text-field>
                         <v-text-field
+                         prepend-icon="mdi-map-search"
                           label="Region"
                           v-model="region"
                         ></v-text-field>
@@ -81,12 +82,12 @@
                         <v-text-field
                           label="Personagem"
                           v-model="nameC"
-                          prepend-icon=""
+                          prepend-icon="mdi-human-greeting"
                         ></v-text-field>
                         <v-text-field
                           label="Title"
                           v-model="title"
-                          prepend-icon=""
+                          prepend-icon="mdi-medal"
                         ></v-text-field>
                       </v-form>
                     </v-card-text>
@@ -120,19 +121,22 @@
                 <template v-slot:default="dialog">
                   <v-card>
                     <v-toolbar color="#757575">
-                      <v-toolbar-title dark>What Your 's Book</v-toolbar-title>
+                      <v-toolbar-title dark
+                       prepend-icon="mdi-book-open-variant"
+                      >What Your 's Book !!</v-toolbar-title>
                     </v-toolbar>
                     <v-card-text>
                       <v-form class="px-3">
                         <v-text-field
+                         prepend-icon="mdi-book-open-variant"
                           label="Book Name"
                           v-model="book"
-                          prepend-icon=""
+                          
                         ></v-text-field>
                         <v-text-field
+                         prepend-icon="mdi-book-open-variant"
                           label="Author"
                           v-model="author"
-                          prepend-icon=""
                         ></v-text-field>
                       </v-form>
                     </v-card-text>
