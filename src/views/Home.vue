@@ -23,46 +23,7 @@
               <div class="grey--text">{{ person.role }}</div>
             </v-card-text>
             <v-card-actions>
-              <v-dialog
-      v-model="dialog"
-      persistent
-      max-width="290"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-         
-         rounded
-          block
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Envie uma mensagem
-        </v-btn>
-      </template>
-      <v-card >
-        <v-textarea label="Envie uma mensagem aos nossos desenvolvedores!">
-        </v-textarea>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Disagree
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Agree
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+
             </v-card-actions>
           </v-card>
         </v-flex>
