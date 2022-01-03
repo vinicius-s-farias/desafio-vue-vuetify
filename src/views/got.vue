@@ -203,7 +203,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .back {
   background-image: url("https://s1.1zoom.me/big3/533/Game_of_Thrones_8_Sitting_Three_3_562310_3840x2160.jpg");
   background-size: cover;
