@@ -1,10 +1,11 @@
 <template>
   <v-app>
       <v-app-bar app dark>
-
+         <router-link class="home--link" to="/">
         <v-toolbar-title>
           Desafio Vue + Vuetify</v-toolbar-title
         >
+        </router-link>
         <v-spacer></v-spacer>
         <v-btn
           v-for="(link, i) in links"
@@ -70,3 +71,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .home--link {
+    text-decoration: none;
+    color: white;
+}
+
+</style>
