@@ -18,8 +18,8 @@
             rounded
             v-model="search"
             placeholder="Buscar um filme"
-            @click:append="teste"
-            @keydown.enter="teste"
+            @click:append="openDialogSearch"
+            @keydown.enter="openDialogSearch"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -166,13 +166,11 @@ export default {
       res = await fetch(url_movie);
       const movie = await res.json();
 
-      console.log(similar)
-
       this.similar = similar.results;
       this.movie = movie;
       this.dialog = true;
     },
-    async teste() {
+    async openDialogSearch() {
       const url_search = `${this.base_url}search/movie?api_key=${this.api_key}&language=en-US&query=${this.search}&page=1&include_adult=false`;
       const res = await fetch(url_search);
       const search = await res.json();
