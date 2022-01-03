@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- lembre daqui -->
     <v-card>
       <v-tabs color="deep-purple accent-4" right v-model="activetab">
         <v-tab v-for="(genre, i) in genres" :key="i" value="genre.name">
@@ -7,6 +8,7 @@
         </v-tab>
       </v-tabs>
     </v-card>
+    <!-- lembre daqui -->
     <v-sheet class="mx-auto" elevation="8">
       <v-slide-group v-model="active_card" class="pb-2" mandatory show-arrows>
         <v-slide-item
