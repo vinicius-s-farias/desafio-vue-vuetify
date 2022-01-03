@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-card class="pa-2">
+    <v-card class="pa-2" dark>
       <v-row>
         <v-col cols="10">
-          <v-tabs color="deep-purple accent-4" right v-model="activetab">
+          <v-tabs color="#0D47A1" right v-model="activetab">
             <v-tab v-for="(genre, i) in genres" :key="i" value="genre.name">
               {{ genre.name }}
             </v-tab>
@@ -18,14 +18,15 @@
             rounded
             v-model="search"
             placeholder="Buscar um filme"
+            color="#0D47A1"
             @click:append="openDialogSearch"
             @keydown.enter="openDialogSearch"
           ></v-text-field>
         </v-col>
       </v-row>
     </v-card>
-    <v-sheet class="mx-auto" elevation="8">
-      <v-slide-group v-model="active_card" class="pb-2" mandatory show-arrows>
+    <v-sheet class="mx-auto" elevation="8" dark>
+      <v-slide-group v-model="active_card" class="pb-2" show-arrows>
         <v-slide-item
           v-for="(
             { poster_path, title, vote_average, vote_count }, i
@@ -34,10 +35,12 @@
           v-slot="{ active, toggle }"
         >
           <v-card
-            :color="active ? 'primary' : 'grey lighten-1'"
+            :color="active ? '#0D47A1' : 'grey lighten-1'"
             class="ma-2 overflow-hidden"
             height="700"
             width="500"
+            outlined
+            raised
             @click="toggle"
             @click.stop="opendialog"
           >
@@ -66,11 +69,11 @@
                 </v-row>
               </v-card-text>
             </v-img>
-            <v-dialog v-model="dialog" scrollable hide-overlay >
-              <v-card>
+            <v-dialog v-model="dialog" scrollable open-delay="300">
+              <v-card dark>
                 <v-row>
                   <v-col cols="12">
-                    <v-card >
+                    <v-card>
                       <v-img
                         :src="image_url + movie.backdrop_path"
                         class="white--text align-end"
@@ -90,34 +93,34 @@
                 </v-row>
                 <v-row>
                   <v-col cols="12">
-                  
-                    <v-sheet class="mx-auto" elevation="8">
-                    
-                      <v-slide-group class="pb-2" mandatory show-arrows>
-                        
-                        <v-slide-item
-                          v-for="(
-                            { poster_path, original_title }, i
-                          ) in similar"
-                          :key="i"
-                        >
-                          <v-card
-                            class="ma-2 overflow-hidden"
-                            height="400"
-                            width="250"
+                    <v-card flat>
+                      <v-card-title> Filmes Similares </v-card-title>
+                      <v-sheet class="mx-auto" elevation="2">
+                        <v-slide-group show-arrows>
+                          <v-slide-item
+                            disabled
+                            v-for="({ poster_path, original_title }, i) in similar"
+                            :key="i"
                           >
-                            <v-img
-                              :src="image_url + poster_path"
-                              class="white--text align-end"
-                              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                              height="400px"
+                            <v-card
+                              class="mr-2 overflow-hidden"
+                              outlined
+                              raised
                             >
-                              <v-card-title>{{ original_title }}</v-card-title>
-                            </v-img>
-                          </v-card>
-                        </v-slide-item>
-                      </v-slide-group>
-                    </v-sheet>
+                              <v-img
+                                :src="image_url + poster_path"
+                                class="white--text align-end"
+                                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                                height="280"
+                                width="184"
+                              >
+                              <v-card-text>{{original_title}}</v-card-text>
+                              </v-img>
+                            </v-card>
+                          </v-slide-item>
+                        </v-slide-group>
+                      </v-sheet>
+                    </v-card>
                   </v-col>
                 </v-row>
               </v-card>
@@ -148,18 +151,18 @@ export default {
   }),
   methods: {
     async getGenres() {
-      const url_genres = `${this.base_url}genre/movie/list?api_key=${this.api_key}`;
+      const url_genres = `${this.base_url}genre/movie/list?api_key=${this.api_key}&include_adult=false`;
       const res = await fetch(url_genres);
       const genres = await res.json();
 
       return genres.genres;
     },
     async opendialog() {
-      const { id} = this.titles[this.activetab].titles[this.active_card];
+      const { id } = this.titles[this.activetab].titles[this.active_card];
 
-      const url_movie = `${this.base_url}movie/${id}?api_key=${this.api_key}&language=en-US`;
-      const url_similar = `${this.base_url}/movie/${id}/similar?api_key=${this.api_key}&language=en-US&page=1`;
-      
+      const url_movie = `${this.base_url}movie/${id}?api_key=${this.api_key}&language=en-US&include_adult=false`;
+      const url_similar = `${this.base_url}/movie/${id}/recommendations?api_key=${this.api_key}&language=en-US&page=1&include_adult=false`;
+
       let res = await fetch(url_similar);
       const similar = await res.json();
 
