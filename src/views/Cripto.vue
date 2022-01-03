@@ -1,5 +1,10 @@
 <template>
   <div>
+    <v-img
+    background-size:
+    cover
+    src="https://img.freepik.com/vetores-gratis/fundo-rosa-claro-com-formas-abstratas-dinamicas_1393-230.jpg?size=626&ext=jpg"
+    >
     <v-row>
       <v-col cols="1">
         <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/09/Cryptocurrency-Bitcoin-PNG-1024x350.png" alt="" width="300">
@@ -18,49 +23,22 @@
               required
               prepend-icon="mdi-bitcoin"
             ></v-text-field>
-
             <v-text-field
-              v-model.lazy="higher"
-              label="Maior Preço nas ultimas 24hrs"
+              :label= titulos[i]
+              v-for="(valor, i) in valores"
+              :key="i"
               v-money="money"
-              v-if="mostrar"
+              v-model="valores[i]"
             ></v-text-field>
 
             <v-text-field
-              v-model.lazy="lower"
-              label="Menor Preço nas últimas 24hrs"
-              v-money="money"
+              label="Quantidade negociada nas últimas 24 horas."
+              v-model="qtde"
               v-if="mostrar"
             ></v-text-field>
 
-            <v-text-field
-              v-model.lazy="qtde"
-              label="Quantidade negociada nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar"
-            >
-            </v-text-field>
 
-            <v-text-field
-              v-model="price"
-              label="Preço unitário da ultima negociação"
-              v-money="money"
-              v-if="mostrar"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="maiorOferta"
-              label="Maior preço de oferta nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="menorOferta"
-              label="Menor preço de oferta nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar"
-            ></v-text-field>
+           
           </v-container>
         </v-form>
       </v-col>
@@ -76,46 +54,27 @@
             ></v-text-field>
 
             <v-text-field
-              v-model.lazy="higher2"
-              label="Maior Preço nas ultimas 24hrs"
+              v-for="(valor, i) in valores2"
+              :key="i"
               v-money="money"
-              v-if="mostrar2"
+              v-model="valores2[i]"
+            ></v-text-field>
+             <v-text-field
+              :label= titulos[i]
+              v-for="(valor, i) in valores3"
+              :key="i"
+              v-money="money"
+              v-model="valores3[i]"
             ></v-text-field>
 
             <v-text-field
-              v-model="lower2"
-              label="Menor Preço nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar2"
-            ></v-text-field>
-
-            <v-text-field
+              label="Quantidade negociada nas últimas 24 horas."
               v-model="qtde2"
-              label="Quantidade negociada nas últimas 24hrs"
-              v-money="money"
               v-if="mostrar2"
-            ></v-text-field>
+            >
 
-            <v-text-field
-              v-model="price2"
-              label="Preço unitário da ultima negociação"
-              v-money="money"
-              v-if="mostrar2"
-            ></v-text-field>
+            </v-text-field>
 
-            <v-text-field
-              v-model="maiorOferta2"
-              label="Maior preço de oferta nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar2"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="menorOferta2"
-              label="Menor preço de oferta nas últimas 24hrs"
-              v-money="money"
-              v-if="mostrar2"
-            ></v-text-field>
           </v-container>
         </v-form>
       </v-col>
@@ -144,29 +103,29 @@
         RESET
       </v-btn>
     </v-row>
+    </v-img>
   </div>
 </template>
 <script>
 import { VMoney } from "v-money";
 export default {
   data: () => ({
-    mostrar: false,
-    mostrar2: false,
     valid: true,
     sigla: "",
-    higher: "",
-    lower: "",
-    qtde: "",
-    price: "",
-    maiorOferta: "",
-    menorOferta: "",
+    valores:{},
+    titulos:{0: "Maior preço nas últimas 24hrs",
+            1: "Menor preço nas últimas 24 hrs",
+            2: "Preço unitário na última negociação",
+            3: "Maior preço de oferta nas últimas 24hrs",
+            4: "Menor preço de oferta nas últimas 24hrs" 
+            },
     sigla2: "",
-    higher2: "",
-    lower2: "",
-    qtde2: "",
-    price2: "",
-    maiorOferta2: "",
-    menorOferta2: "",
+    valores2:{},
+    valores3:{},
+    qtde:"",
+    qtde2:"",
+    mostrar: false,
+    mostrar2: false,
     nameRules: [(v) => !!v || "Sigla obrigatória"],
 
     money: {
@@ -187,14 +146,13 @@ export default {
           );
           if (!response.ok) throw new Error("Erro na requisição");
           const json = await response.json();
-          this.higher = parseFloat(json.ticker.high.replace(".", ""));
-          this.lower = parseFloat(json.ticker.low.replace(".", ""));
-          this.qtde = parseFloat(json.ticker.vol.replace(".", ""));
-          this.price = parseFloat(json.ticker.last.replace(".", ""));
-          this.maiorOferta = parseFloat(json.ticker.buy.replace(".", ""));
-          this.menorOferta = parseFloat(json.ticker.sell.replace(".", ""));
-          this.mostrar = true;
-          console.log(this.higher);
+          this.valores[0] = parseFloat(json.ticker.high.replace(".", ""));
+          this.valores[1] = parseFloat(json.ticker.low.replace(".", ""));
+          this.valores[2] = parseFloat(json.ticker.last.replace(".", ""));
+          this.valores[3] = parseFloat(json.ticker.buy.replace(".", ""));
+          this.valores[4] = parseFloat(json.ticker.sell.replace(".", ""));
+          this.qtde = json.ticker.vol;
+          this.mostrar  = true;
         } catch (error) {
           window.alert("Sigla invalida");
         }
@@ -205,20 +163,19 @@ export default {
     },
 
     async getMoeda2() {
-      console.log("cheguei");
       try {
         const response = await fetch(
           `https://www.mercadobitcoin.net/api/${this.sigla2}/ticker/`
         );
         if (!response.ok) throw new Error("Erro na requisição");
         const json = await response.json();
-        console.log(json);
-        this.higher2 = parseFloat(json.ticker.high.replace(".", ""));
-        this.lower2 = parseFloat(json.ticker.low.replace(".", ""));
-        this.qtde2 = parseFloat(json.ticker.vol.replace(".", ""));
-        this.price2 = parseFloat(json.ticker.last.replace(".", ""));
-        this.maiorOferta2 = parseFloat(json.ticker.buy.replace(".", ""));
-        this.menorOferta2 = parseFloat(json.ticker.sell.replace(".", ""));
+        this.valores3[0] = parseFloat(json.ticker.high.replace(".", ""));
+        this.valores3[1] = parseFloat(json.ticker.low.replace(".", ""));
+        this.valores3[2] = parseFloat(json.ticker.last.replace(".", ""));
+        this.valores3[3] = parseFloat(json.ticker.buy.replace(".", ""));
+        this.valores3[4] = parseFloat(json.ticker.sell.replace(".", ""));
+        this.qtde2 = json.ticker.vol;
+        this.valores2 = true;
         this.mostrar2 = true;
       } catch (error) {
         window.alert("Sigla invalida");
@@ -237,8 +194,5 @@ export default {
 h1 {
   font: bold;
   text-align: center;
-}
-template{
-  background-color: green;
 }
 </style>
