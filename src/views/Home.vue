@@ -4,7 +4,7 @@
       <v-flex xs12 sm6 md4 lg3 v-bind="team" v-for="person in newTeam" :key="person.name">
         <v-card text class="text-xs-center ma-3">
           <v-responsive class="pt-4">
-              <v-avatar>
+              <v-avatar size="100">
                   <img :src="person.link">
               </v-avatar>
           </v-responsive>

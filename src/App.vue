@@ -1,28 +1,11 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app class="primary" dark>
-        <v-list>
-          <v-list-item v-for="item in items" :key="item.title" link>
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-
-        <template v-slot:append>
-          <div class="pa-2"></div>
-        </template>
-    </v-navigation-drawer>
       <v-app-bar app dark>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title class="subheading green--text"
-          >Projects</v-toolbar-title
+          >Desafio Vue + Vuetify</v-toolbar-title
         >
+        <v-spacer></v-spacer>
         <v-btn
           v-for="(link, i) in links"
           :key="i"
@@ -52,9 +35,8 @@ export default {
   },
   data: function() {
     return {
-    drawer: false,
     items: [
-      { title: "Dashboard", icon: "mdi-view-dashboard" },
+      { title: "Cripto", icon: "mdi-view-dashboard" },
       { title: "Team", icon: "mdi-account-box" },
       { title: "Projects", icon: "mdi-gavel" },
     ],
@@ -64,13 +46,25 @@ export default {
         path: "/",
       },
       {
-        label: "Projects",
-        path: "/Projects",
+        label: "Cripto",
+        path: "/cripto",
       },
       {
-        label: "Dashboard",
-        path: "/Dashboard",
+        label: "Streaming",
+        path: "/streaming",
       },
+      {
+        label: "Pokedex",
+        path: "/pokedex"
+      },
+      {
+        label: "Movies",
+        path: "/movies"
+      },
+      {
+        label: "Got",
+        path: "/got"
+      }
     ],
     }
   }
