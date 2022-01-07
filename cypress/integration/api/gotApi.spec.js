@@ -1,10 +1,11 @@
-/// <reference types="Cypress" />
-
+/// <reference types="Cypress"/>
 Cypress.on("uncaught:exception", (err, runnable) => {
     return false;
   });
-  let acessToken;
-  Cypress.Commands.add("APItest", () => { 
+
+describe('Got api test', () => {
+ 
+    it('Sucesso', () => {
         cy.request({
             method: "GET",
             url:    "https://anapioficeandfire.com/api/houses/",
@@ -35,8 +36,10 @@ Cypress.on("uncaught:exception", (err, runnable) => {
         ]
         
     },
-           
+        
+    
     })
     
 })
 
+})
